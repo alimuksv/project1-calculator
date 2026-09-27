@@ -4,7 +4,7 @@ package alim.dev.calculator;
 public class Calculator {
 
 
-    public int calculate(int firstNum, int secondNum, String operator){
+    public double calculate(double firstNum, double secondNum, String operator){
         switch (operator){
             case "+" -> {
                 return firstNum + secondNum;
