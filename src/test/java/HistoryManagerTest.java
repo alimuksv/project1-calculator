@@ -34,7 +34,7 @@ public class HistoryManagerTest {
 }
 
 @Test
-    public void getLastExpression(){
+    public void getLastInput(){
         history.addToHistory("9.0 / 2.0 = 4.5");
         history.addToHistory("3.0 * 2.0 = 6.0");
         assertEquals("3.0 * 2.0 = 6.0", history.getLastExpression());
