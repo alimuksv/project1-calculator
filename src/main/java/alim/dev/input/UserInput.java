@@ -1,8 +1,7 @@
 package alim.dev.input;
 
-import alim.dev.calculator.Calculator;
 import alim.dev.command.CommandHandler;
-import alim.dev.history.HistoryManager;
+
 import java.util.Scanner;
 
 public class UserInput {
@@ -13,9 +12,9 @@ public class UserInput {
     private final InputParser inputParser;
     private final CommandHandler commandHandler;
 
-    private static final String Incorrect_Format_Message = "Ошибка: неверный формат. Используйте: число оператор число";
-    private static final String Division_By_Zero_Message = "Ошибка: деление на ноль";
-    private static final String Introductory_Message = "Введите свое выражение:";
+    private static final String INCORRECT_FORMAT_MESSAGE = "Ошибка: неверный формат. Используйте: число оператор число";
+    private static final String DIVISION_BY_ZERO_MESSAGE = "Ошибка: деление на ноль";
+    private static final String INTRODUCTORY_MESSAGE = "Введите свое выражение:";
 
 
 
@@ -32,9 +31,11 @@ public class UserInput {
 
     public void start(){
 
-        System.out.println(Introductory_Message);
+        System.out.println(INTRODUCTORY_MESSAGE);
         String originalInput = input.nextLine();
 
+
+        commandHandler.responseToTheCommand(originalInput);
 
         while (!originalInput.equals("exit")) {
 
@@ -55,20 +56,25 @@ public class UserInput {
 
 
                 } catch (NumberFormatException numberFormatException) {
-                    System.out.println(Incorrect_Format_Message);
+                    System.out.println(INCORRECT_FORMAT_MESSAGE);
                     originalInput = input.nextLine(); //очистка регистра
 
                 } catch (ArithmeticException arithmeticException) {
-                    System.out.println(Division_By_Zero_Message);
+                    System.out.println(DIVISION_BY_ZERO_MESSAGE);
                     originalInput = input.nextLine(); //очистка, так же
 
-                } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-                    System.out.println(Incorrect_Format_Message);
+                } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException arrayIndexOutOfBoundsException) {
+                    System.out.println(INCORRECT_FORMAT_MESSAGE);
                     originalInput = input.nextLine();
+
                 }
+
+
             }
 
         }
+        commandHandler.responseToTheCommand(originalInput);
+
         input.close();
 
 

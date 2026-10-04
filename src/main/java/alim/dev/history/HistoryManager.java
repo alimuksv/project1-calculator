@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class HistoryManager{
 
-    private ArrayList<String> history = new ArrayList<>(); //пока пусть будет 3
+    private ArrayList<String> history = new ArrayList<>(10);
 
     public void addToHistory(String expression){
         history.add(expression);
@@ -20,7 +20,7 @@ public class HistoryManager{
         if(history.isEmpty()){
             return null;
         }
-        return history.get(history.size()-1);
+        return history.getLast();
     }
 
     public void clearAllHistory(){

@@ -1,21 +1,24 @@
 package alim.dev.command;
 
+import alim.dev.calculator.Calculator;
 import alim.dev.history.HistoryManager;
-import alim.dev.input.UserInput;
+import alim.dev.input.InputParser;
 
 public class CommandHandler {
 
 
     private final HistoryManager historyManager;
+    private final InputParser inputParser;
 
-    private static final String Exiting_Message = "Выход...";
-    private static final String History_Is_Empty_Message = "История пуста";
-    private static final String History_Cleared_Message = "История очищена";
+    private static final String EXITING_MESSAGE = "Выход...";
+    private static final String HISTORY_IS_EMPTY_MESSAGE = "История пуста";
+    private static final String HISTORY_CLEARED_MESSAGE = "История очищена";
 
 
-    public CommandHandler( HistoryManager historyManager){
+    public CommandHandler(HistoryManager historyManager, InputParser inputParser){
 
         this.historyManager = historyManager;
+        this.inputParser = inputParser;
     }
 
     public boolean responseToTheCommand(String command){
@@ -23,7 +26,7 @@ public class CommandHandler {
         switch (command){
             case "history" -> {
                 if(historyManager.getHistory().isEmpty()){
-                    System.out.println(History_Is_Empty_Message);
+                    System.out.println(HISTORY_IS_EMPTY_MESSAGE);
                 }else{
                     for(int i = 0; i < historyManager.getSize(); i++){
                         System.out.println(
@@ -38,17 +41,17 @@ public class CommandHandler {
 
             case "last" -> {
                 if(historyManager.getLastExpression() == null) {
-                    System.out.println(History_Is_Empty_Message);
+                    System.out.println(HISTORY_IS_EMPTY_MESSAGE);
                     return true;
                 }
-                System.out.println(
-                        historyManager.getLastExpression());
+                System.out.println(historyManager.getLastExpression() + " = " +
+                        inputParser.parsing(historyManager.getLastExpression()));
                 return true;
             }
 
             case "clear" -> {
                 historyManager.clearAllHistory();
-                System.out.println(History_Cleared_Message);
+                System.out.println(HISTORY_CLEARED_MESSAGE);
                 return true;
 
             }
@@ -77,7 +80,7 @@ public class CommandHandler {
             }
 
             case "exit" -> {
-                System.out.println(Exiting_Message);
+                System.out.println(EXITING_MESSAGE);
                 return true;
             }
 

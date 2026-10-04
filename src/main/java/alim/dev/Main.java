@@ -18,7 +18,7 @@ public class Main {
         HistoryManager historyManager = new HistoryManager();
         Scanner input = new Scanner(System.in);
         InputParser inputParser = new InputParser(calculator,historyManager);
-        CommandHandler commandHandler = new CommandHandler(historyManager);
+        CommandHandler commandHandler = new CommandHandler(historyManager,inputParser);
 
             UserInput userInput = new UserInput(
                     input,
@@ -26,6 +26,7 @@ public class Main {
                     commandHandler
                     );
             userInput.start();
+
 
     }
 

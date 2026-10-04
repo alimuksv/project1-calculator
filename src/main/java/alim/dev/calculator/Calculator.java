@@ -25,9 +25,6 @@ public class Calculator {
         if(operations.get(operator) == null){
             throw new IllegalArgumentException("Неизвестный оператор:" + operator);
         }
-        else if((num2 == 0) && (operator.equals("/") || operator.equals("%"))){
-            throw new ArithmeticException("Ошибка деления на 0");
-        }
         Operation operation = operations.get(operator);
         return operation.execute(num1, num2);
     }
