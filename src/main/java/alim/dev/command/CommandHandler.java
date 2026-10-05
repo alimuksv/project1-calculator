@@ -1,6 +1,6 @@
 package alim.dev.command;
 
-import alim.dev.calculator.Calculator;
+
 import alim.dev.history.HistoryManager;
 import alim.dev.input.InputParser;
 
@@ -30,7 +30,8 @@ public class CommandHandler {
                 }else{
                     for(int i = 0; i < historyManager.getSize(); i++){
                         System.out.println(
-                                i+1 + ") " + historyManager.getHistory().get(i)
+                                i+1 + ") " + historyManager.getHistory().get(i) +
+                                      " = "  + historyManager.getHistoryOfResult().get(i)
                         );
                     }
 

@@ -35,8 +35,6 @@ public class UserInput {
         String originalInput = input.nextLine();
 
 
-        commandHandler.responseToTheCommand(originalInput);
-
         while (!originalInput.equals("exit")) {
 
             if (commandHandler.responseToTheCommand(originalInput)) {

@@ -1,7 +1,6 @@
 package alim.dev.input;
 
 import alim.dev.calculator.Calculator;
-import alim.dev.command.CommandHandler;
 import alim.dev.history.HistoryManager;
 
 import java.util.*;
@@ -72,6 +71,9 @@ public class InputParser {
             if (number.length() > 0) {
                 parts.add(number.toString());
             }
+            if  (parts.size() == 1){
+                throw new IllegalArgumentException("Некорректный ввод");
+            }
 
 
             while (parts.size() != 1) {
@@ -88,6 +90,7 @@ public class InputParser {
 
             String resultToString = Double.toString(calculationResult);
             historyManager.addToHistory(originalInput);
+            historyManager.addHistoryResultToHistory(resultToString);
 
             return resultToString;
 
