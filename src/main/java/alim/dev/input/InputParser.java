@@ -89,8 +89,15 @@ public class InputParser {
 
 
             String resultToString = Double.toString(calculationResult);
-            historyManager.addToHistory(originalInput);
-            historyManager.addHistoryResultToHistory(resultToString);
+            if(historyManager.getHistory().isEmpty() || !historyManager.getLastExpression().equals(originalInput) ){
+                historyManager.addToHistory(originalInput);
+                historyManager.addHistoryResultToHistory(resultToString);
+
+            }
+            else{
+                return resultToString;
+            }
+            
 
             return resultToString;
 

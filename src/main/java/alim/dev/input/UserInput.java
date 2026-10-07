@@ -15,7 +15,7 @@ public class UserInput {
     private static final String INCORRECT_FORMAT_MESSAGE = "Ошибка: неверный формат. Используйте: число оператор число";
     private static final String DIVISION_BY_ZERO_MESSAGE = "Ошибка: деление на ноль";
     private static final String INTRODUCTORY_MESSAGE = "Введите свое выражение:";
-
+    private static final String HISTORY_IS_EMPTY_MESSAGE = "История пуста";
 
 
     public UserInput(
@@ -66,7 +66,6 @@ public class UserInput {
                     originalInput = input.nextLine();
 
                 }
-
 
             }
 
